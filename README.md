@@ -5,3 +5,6 @@
 
 ## React-testing-library, Jest, 
 ![imagen](https://user-images.githubusercontent.com/52834318/194440932-1a7005f1-7b73-42b6-8760-13da44d93d34.png)
+
+## Search Input, https://randomuser.me/api/?results=10
+![image](https://user-images.githubusercontent.com/52834318/194715660-f5ec26e4-1f26-449a-86e0-584d0ad5ace8.png)
