@@ -1,0 +1,14 @@
+.searchBox {
+  border: 1px solid #cccccc;
+  padding: 10px;
+}
+
+.searchBox input {
+  border-radius: 20px;
+  width: 90%;
+}
+
+input::focus {
+  outline: none;
+  appearance: none;
+}
