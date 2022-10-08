@@ -1,0 +1,31 @@
+.container {
+  width: 98%;
+  border: 2px solid #f00;
+  padding: 10px;
+}
+.header {
+  margin: 10px auto;
+}
+.main {
+  display: flex;
+}
+
+.list {
+  float: left;
+}
+
+.box {
+  float: left;
+}
+
+.button {
+  background-color: #4caf50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin-left: 10px;
+}

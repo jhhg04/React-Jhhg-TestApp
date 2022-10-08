@@ -1,58 +1,77 @@
-import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import './styles.css';
-
-import SearchBox from './components/SearchBox/SearchBox';
-import User from './components/User/User';
-import EmptyState from './components/EmptyState/EmptyState';
+import { obtenerPersonaje, obtenerTodo } from './funciones';
+import './styles-rym.css';
 
 const App = () => {
-  const [users, setUsers] = useState([]);
-  const [filteredUsers, setFilteredUsers] = useState([]);
+  const [url, setUrl] = useState(
+    'https://rickandmortyapi.com/api/character/?page=1'
+  );
+  const [siguiente, setSiguiente] = useState(null);
+  const [anterior, setAnterior] = useState(null);
+  const [paginas, setPaginas] = useState(null);
+  const [total, setTotal] = useState(null);
+  const [personajes, setPersonajes] = useState(null);
+  const [personaje, setPersonaje] = useState(null);
+
+  const irSiguiente = (url) => setUrl(url);
+  const irAnterior = (url) => setUrl(url);
 
   useEffect(() => {
-    fetchDataAxios();
-    // fetchData();
-  }, []);
-
-  const fetchDataAxios = async () => {
-    try {
-      const { data } = await axios.get('https://randomuser.me/api/?results=10');
-      setUsers(data.results);
-      setFilteredUsers(data.results);
-      console.log(data.results);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  // const fetchData = () => {
-  //   fetch('https://randomuser.me/api/?results=10')
-  //     .then((response) => response.json())
-  //     .then((data) => {
-  //       setUsers(data.results);
-  //       console.log(data.results);
-  //     });
-  // };
-
-  const filterUsers = (searchString) => {
-    const filtered = users.filter((user) =>
-      user.name.last.includes(searchString)
+    obtenerTodo(
+      url,
+      setSiguiente,
+      setPaginas,
+      setTotal,
+      setPersonajes,
+      setAnterior
     );
-    setFilteredUsers(filtered);
-  };
+  }, [url]);
 
   return (
-    <div className='App'>
-      <div className='box'>
-        <SearchBox handleChange={filterUsers} />
-        {filteredUsers.length === 0 ? (
-          <EmptyState msg='No Matches' />
+    <div className='container'>
+      <div className='header'>
+        <h2>Welcome to Rick & Morty App</h2>
+        <p>Total Characters: {total}</p>
+        <p>Total Pages: {paginas}</p>
+        {anterior !== null ? (
+          <button className='button' onClick={() => irAnterior(anterior)}>
+            prev
+          </button>
         ) : (
-          filteredUsers.map((user) => (
-            <User key={user.phone} name={user.name.last} />
-          ))
+          ''
         )}
+        {siguiente !== null ? (
+          <button className='button' onClick={() => irSiguiente(siguiente)}>
+            next
+          </button>
+        ) : (
+          ''
+        )}
+      </div>
+
+      <div className='main'>
+        <div className='list'>
+          {personajes !== null
+            ? personajes.map((personaje) => (
+                <p
+                  key={personaje.id}
+                  onClick={() => obtenerPersonaje(personaje.id, setPersonaje)}
+                >
+                  {personaje.name}
+                </p>
+              ))
+            : ''}
+        </div>
+        <div className='card'>
+          {personaje !== null ? (
+            <div>
+              <h2>{personaje.name}</h2>
+              <img src={personaje.image} alt={personaje.name} />
+            </div>
+          ) : (
+            ''
+          )}
+        </div>
       </div>
     </div>
   );
