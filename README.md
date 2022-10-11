@@ -11,3 +11,10 @@
 
 ## Rick & Morty, users, images, pagination
 ![imagen](https://user-images.githubusercontent.com/52834318/194726045-300f5403-a7d0-459b-aad1-ff57725d1962.png)
+
+## Weather, Countries, Cities, Consume 3 Apis
+![imagen](https://user-images.githubusercontent.com/52834318/195161176-65eaca38-64ce-457c-b6fe-ffc5cb54d4bc.png)
+
+## Brealink Bad Apis
+![imagen](https://user-images.githubusercontent.com/52834318/195207693-2ba5a320-9cb7-4e56-a5c9-6c909f4dbd0a.png)
+
